@@ -28,8 +28,8 @@ try:
 	i=0
 	j=0
 	while 1:
-		Sabertooth_Serial.write('%d'%(i))
-		Sabertooth_Serial.write('%d'%(j))
+		driveA(i)
+		driveB(j)
 		time.sleep(100)
 		i += 1
 		j -= 1
