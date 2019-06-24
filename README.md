@@ -56,5 +56,5 @@ motorA(-25)
 ``` 
 close serial after use
 ``` python
-	Sabertooth_Serial.close() 
+Sabertooth_Serial.close() 
 ```
