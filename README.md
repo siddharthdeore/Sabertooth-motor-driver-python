@@ -13,3 +13,48 @@ in your python script import time and serial module
 import time
 import serial
 ``` 
+defination of linear interpolation function similler to arduino map()
+
+``` python
+def lerp( x, min_in, max_in, min_out, max_out ):
+	return min_out + (x - min_in) * (max_out-min_out)/(max_in-min_in)
+``` 
+Sabertooth motor rotation functions
+
+``` python
+#Rotates First Motor conected to M1A M1B of Sabertooth 2X25 or 2X60 Motor Driver
+def motorA( speed ):
+	output = lerp(speed, -100, 100, 0, 127)
+	Sabertooth_Serial.write(output)
+	
+#Rotates Second Motor conected to M2A M2B of Sabertooth 2X25 or 2X60 Motor Driver
+def motorB( speed ):
+	output = lerp(speed, -100, 100, 128, 255)
+	Sabertooth_Serial.write(output)
+``` 
+to send data to sabertooth, open serial port
+
+``` python
+try:
+	# Open Serial Port
+	Sabertooth_Serial = serial.Serial(
+		port='/dev/ttyAMA0', # SERIAL PORT on SBC 
+		baudrate = 9600,
+		parity=serial.PARITY_NONE,
+		stopbits=serial.STOPBITS_ONE,
+		bytesize=serial.EIGHTBITS,
+		timeout=1
+	)
+  ``` 
+to run the motor A at 50% speed
+``` python
+motorA(50)
+``` 
+to run motor A in reverse direction at 25% speed
+``` python
+motorA(-25)
+``` 
+close serial after use
+``` python
+	Sabertooth_Serial.close() 
+```
