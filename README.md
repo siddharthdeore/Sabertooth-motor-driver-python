@@ -7,3 +7,9 @@ first install python-serial to your single board computer
 ```
 sudo apt-get install python-serial
 ```
+in your python script import time and serial module
+
+``` python
+import time
+import serial
+``` 
