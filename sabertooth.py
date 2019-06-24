@@ -13,10 +13,11 @@ def driveA( speed ):
 def driveB( speed ):
 	output = lerp(speed, -100, 100, 128, 255)
 	Sabertooth_Serial.write(output)
-	
+
+# Open Serial Port
 try:
 	Sabertooth_Serial = serial.Serial(
-		port='/dev/ttyAMA0',
+		port='/dev/ttyAMA0', # SERIAL PORT on SBC 
 		baudrate = 9600,
 		parity=serial.PARITY_NONE,
 		stopbits=serial.STOPBITS_ONE,
@@ -37,5 +38,4 @@ try:
 		if (i > 100 or j >100):
 			i,j=j,i
 			
-
-	Sabertooth_Serial.close()								# Close Serial Port
+	Sabertooth_Serial.close() # Close Serial Port
