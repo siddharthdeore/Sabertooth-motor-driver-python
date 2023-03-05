@@ -30,7 +30,7 @@ try:
 	while 1:
 		motorA(i)
 		motorB(j)
-		time.sleep(100)
+		time.sleep(1)
 		i += 1
 		j -= 1
 		
@@ -39,3 +39,6 @@ try:
 
 	# Close Serial Port			
 	Sabertooth_Serial.close() 
+
+except serial.SerialException as e:
+	print(f"Error writing to serial port: {e}")
