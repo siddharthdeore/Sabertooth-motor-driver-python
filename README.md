@@ -58,3 +58,15 @@ close serial after use
 ``` python
 Sabertooth_Serial.close() 
 ```
+
+
+``` python
+import numpy as np
+def motorA(x):
+    # motor A reference speed to byte (-100,0,100) -> (0,64,127) 
+    return np.clip(int(x*0.630 + 64),1,127)
+
+def motorB(x):
+    # motor B reference speed to byte (-100,0,100) -> (128,192,255)
+    return np.clip(int(x*0.635 + 192),128,255)
+```
