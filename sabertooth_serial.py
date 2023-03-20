@@ -56,7 +56,7 @@ class SabertoothSerial:
         """
         try:
             output = self.lerp(speed, -100, 100, 1, 128)
-            self.ser.write(output)
+            self.ser.write(output.to_bytes(1,'little'))
         except serial.SerialException as e:
             print(f"Error writing to serial port: {e}")
             raise
@@ -73,7 +73,7 @@ class SabertoothSerial:
         """
         try:
             output = self.lerp(speed, -100, 100, 128, 256)
-            self.ser.write(output)
+            self.ser.write(output.to_bytes(1,'little'))
         except serial.SerialException as e:
             print(f"Error writing to serial port: {e}")
             raise
