@@ -3,7 +3,7 @@ import serial
 class SabertoothSerial:
     """Class for controlling a Sabertooth motor controller over a serial port."""
 
-    def __init__(self, port, baudrate = 9600):
+    def __init__(self, port='/dev/ttyTHS1', baudrate = 9600):
         """Initialize the SabertoothSerial object.
 
         Args:
