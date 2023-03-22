@@ -24,13 +24,13 @@ Sabertooth motor rotation functions
 ``` python
 #Rotates First Motor conected to M1A M1B of Sabertooth 2X25 or 2X60 Motor Driver
 def motorA( speed ):
-	output = lerp(speed, -100, 100, 0, 127)
-	Sabertooth_Serial.write(output)
+	output = int(lerp(speed, -100, 100, 0, 127))
+	Sabertooth_Serial.write(output.to_bytes(1,'little'))
 	
 #Rotates Second Motor conected to M2A M2B of Sabertooth 2X25 or 2X60 Motor Driver
 def motorB( speed ):
-	output = lerp(speed, -100, 100, 128, 255)
-	Sabertooth_Serial.write(output)
+	output = int(lerp(speed, -100, 100, 128, 255))
+	Sabertooth_Serial.write(output.to_bytes(1,'little'))
 ``` 
 to send data to sabertooth, open serial port
 
@@ -62,11 +62,11 @@ Sabertooth_Serial.close()
 
 ``` python
 import numpy as np
-def motorA(x):
+def calc_A(x):
     # motor A reference speed to byte (-100,0,100) -> (0,64,127) 
     return np.clip(int(x*0.630 + 64),1,127)
 
-def motorB(x):
+def calc_B(x):
     # motor B reference speed to byte (-100,0,100) -> (128,192,255)
     return np.clip(int(x*0.635 + 192),128,255)
 ```
